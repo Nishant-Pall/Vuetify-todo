@@ -20,7 +20,14 @@
 					width="100"
 				/>
 			</div>
-
+			<v-spacer></v-spacer>
+			<v-btn to="/">
+				<span>Home</span>
+			</v-btn>
+			<v-spacer></v-spacer>
+			<v-btn to="/about">
+				<span>About</span>
+			</v-btn>
 			<v-spacer></v-spacer>
 
 			<v-btn
