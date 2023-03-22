@@ -13,7 +13,7 @@
 			reprehenderit debitis repudiandae illum eaque pariatur nisi
 			blanditiis optio nemo? Facilis, similique officia.
 		</p>
-		<h1 class="display-4">Massive Display</h1>
+		<h1 class="display-4 hidden-sm-and-down">Massive Display</h1>
 		<h4 class="display-1">Small Display</h4>
 
 		<v-btn class="pink white--text">click me</v-btn>
