@@ -15,9 +15,35 @@
 		</p>
 		<h1 class="display-4">Massive Display</h1>
 		<h4 class="display-1">Small Display</h4>
+
+		<v-btn class="pink white--text">click me</v-btn>
+		<v-btn color="pink" dark depressed>click me</v-btn>
+		<v-btn text color="pink">Click me</v-btn>
+
+		<v-btn depressed class="pink white--text">
+			<!-- they don't work now apparently -->
+			<v-icon left>YO</v-icon>
+			<span>email me</span>
+		</v-btn>
+
+		<v-btn depressed small class="pink white--text">
+			<!-- they don't work now apparently -->
+			<v-icon left small>YO</v-icon>
+			<span>email me</span>
+		</v-btn>
+
+		<v-btn depressed large class="white--text" color="purple" fab>
+			<span>me</span>
+		</v-btn>
 	</div>
 </template>
 
 <script>
 export default {};
 </script>
+
+<style scoped>
+button {
+	margin: 1rem;
+}
+</style>
