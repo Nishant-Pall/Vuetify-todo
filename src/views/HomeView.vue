@@ -1,6 +1,21 @@
+<!-- they don't work now apparently -->
 <template>
 	<div class="home">
-		<h1>This is the home page</h1>
+		<h1>Home page</h1>
+	</div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped>
+button {
+	margin: 1rem;
+}
+</style>
+
+<!-- <h1>This is the home page</h1>
 		<p class="red white--text">
 			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
 			repellendus tempore saepe assumenda id, quae odio vero dolor alias,
@@ -21,29 +36,15 @@
 		<v-btn text color="pink">Click me</v-btn>
 
 		<v-btn depressed class="pink white--text">
-			<!-- they don't work now apparently -->
 			<v-icon left>YO</v-icon>
 			<span>email me</span>
 		</v-btn>
 
 		<v-btn depressed small class="pink white--text">
-			<!-- they don't work now apparently -->
 			<v-icon left small>YO</v-icon>
 			<span>email me</span>
 		</v-btn>
 
 		<v-btn depressed large class="white--text" color="purple" fab>
 			<span>me</span>
-		</v-btn>
-	</div>
-</template>
-
-<script>
-export default {};
-</script>
-
-<style scoped>
-button {
-	margin: 1rem;
-}
-</style>
+		</v-btn> -->
