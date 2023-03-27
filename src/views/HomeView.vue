@@ -1,7 +1,7 @@
 <!-- they don't work now apparently -->
 <template>
 	<div class="home">
-		<h1>Home page</h1>
+		<h1 class="info">Home page</h1>
 	</div>
 </template>
 
