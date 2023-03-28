@@ -1,7 +1,7 @@
-<!-- they don't work now apparently -->
 <template>
 	<div class="home">
-		<h1 class="info">Home page</h1>
+		<h1 class="subheading grey--text">Home page</h1>
+		<v-container class="my-5">CONTENT</v-container>
 	</div>
 </template>
 
