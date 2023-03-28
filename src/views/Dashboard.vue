@@ -3,14 +3,38 @@
 		<h1 class="subheading grey--text">Home page</h1>
 		<v-container class="my-5">
 			<v-layout row class="mb-3">
-				<v-btn small text color="grey" @click="sortBy('title')">
-					<v-icon left>mdi-folder</v-icon>
-					<span>By project name</span>
-				</v-btn>
-				<v-btn small text color="grey" @click="sortBy('person')">
-					<v-icon left>mdi-account</v-icon>
-					<span>By person</span>
-				</v-btn>
+				<v-tooltip bottom>
+					<template v-slot:activator="{ on, attrs }">
+						<v-btn
+							small
+							text
+							color="grey"
+							@click="sortBy('title')"
+							v-bind="attrs"
+							v-on="on"
+						>
+							<v-icon left>mdi-folder</v-icon>
+							<span>By project name</span>
+						</v-btn>
+					</template>
+					<span>Sort by project name</span>
+				</v-tooltip>
+				<v-tooltip bottom>
+					<template v-slot:activator="{ on, attrs }">
+						<v-btn
+							small
+							text
+							color="grey"
+							@click="sortBy('person')"
+							v-bind="attrs"
+							v-on="on"
+						>
+							<v-icon left>mdi-account</v-icon>
+							<span>By person</span>
+						</v-btn>
+					</template>
+					<span>Sort by project person</span>
+				</v-tooltip>
 			</v-layout>
 
 			<v-card
