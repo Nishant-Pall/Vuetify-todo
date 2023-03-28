@@ -2,6 +2,17 @@
 	<div class="home">
 		<h1 class="subheading grey--text">Home page</h1>
 		<v-container class="my-5">
+			<v-layout row class="mb-3">
+				<v-btn small text color="grey" @click="sortBy('title')">
+					<v-icon left>mdi-folder</v-icon>
+					<span>By project name</span>
+				</v-btn>
+				<v-btn small text color="grey" @click="sortBy('person')">
+					<v-icon left>mdi-account</v-icon>
+					<span>By person</span>
+				</v-btn>
+			</v-layout>
+
 			<v-card
 				flat
 				class="pa-5 my-5"
@@ -26,8 +37,9 @@
 							<v-chip
 								small
 								:class="`${project.status} white--text caption my-2`"
-								>{{ project.status }}</v-chip
 							>
+								{{ project.status }}
+							</v-chip>
 						</div>
 					</v-flex>
 				</v-layout>
@@ -43,6 +55,11 @@ export default {
 			projects: this.$store.state.projects,
 		};
 	},
+	methods: {
+		sortBy(prop) {
+			this.projects.sort((a, b) => (a[prop] > b[prop] ? 1 : -1));
+		},
+	},
 };
 </script>
 
@@ -50,12 +67,15 @@ export default {
 button {
 	margin: 1rem;
 }
+
 .project.complete {
 	border-left: 4px solid #3cd1c2;
 }
+
 .project.overdue {
 	border-left: 4px solid orange;
 }
+
 .project.ongoing {
 	border-left: 4px solid tomato;
 }
@@ -63,9 +83,11 @@ button {
 .v-chip.complete {
 	background: #3cd1c2 !important;
 }
+
 .v-chip.overdue {
 	background: orange !important;
 }
+
 .v-chip.ongoing {
 	background: tomato !important;
 }
