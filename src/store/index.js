@@ -39,6 +39,13 @@ export default new Vuex.Store({
 					"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
 			},
 		],
+		team: [
+			{ name: 'The Net Ninja', role: 'Web developer' },
+			{ name: 'Ryu', role: 'Graphic designer' },
+			{ name: 'Chun Li', role: 'Web developer' },
+			{ name: 'Gouken', role: 'Social media maverick' },
+			{ name: 'Yoshi', role: 'Sales guru' }
+		]
 	},
 	getters: {
 	},

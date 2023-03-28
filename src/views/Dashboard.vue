@@ -5,14 +5,7 @@
 			<v-layout row class="mb-3">
 				<v-tooltip bottom>
 					<template v-slot:activator="{ on, attrs }">
-						<v-btn
-							small
-							text
-							color="grey"
-							@click="sortBy('title')"
-							v-bind="attrs"
-							v-on="on"
-						>
+						<v-btn small text color="grey" @click="sortBy('title')" v-bind="attrs" v-on="on">
 							<v-icon left>mdi-folder</v-icon>
 							<span>By project name</span>
 						</v-btn>
@@ -21,14 +14,7 @@
 				</v-tooltip>
 				<v-tooltip bottom>
 					<template v-slot:activator="{ on, attrs }">
-						<v-btn
-							small
-							text
-							color="grey"
-							@click="sortBy('person')"
-							v-bind="attrs"
-							v-on="on"
-						>
+						<v-btn small text color="grey" @click="sortBy('person')" v-bind="attrs" v-on="on">
 							<v-icon left>mdi-account</v-icon>
 							<span>By person</span>
 						</v-btn>
@@ -37,12 +23,7 @@
 				</v-tooltip>
 			</v-layout>
 
-			<v-card
-				flat
-				class="pa-5 my-5"
-				v-for="project in projects"
-				:key="project.title"
-			>
+			<v-card flat class="pa-5 my-5" v-for="project in projects" :key="project.title">
 				<v-layout row wrap :class="`pa-3 project ${project.status}`">
 					<v-flex xs12 md6>
 						<div class="caption grey--text">Title</div>
@@ -58,10 +39,7 @@
 					</v-flex>
 					<v-flex xs2 sm4 md2>
 						<div class="right">
-							<v-chip
-								small
-								:class="`${project.status} white--text caption my-2`"
-							>
+							<v-chip small :class="`${project.status} white--text caption my-2`">
 								{{ project.status }}
 							</v-chip>
 						</div>
