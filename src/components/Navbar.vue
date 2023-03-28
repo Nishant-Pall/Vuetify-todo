@@ -46,6 +46,7 @@ export default {
 				{ icon: "widgets", text: "dashboard", route: "/" },
 				{ icon: "folder", text: "My projects", route: "/projects" },
 				{ icon: "account", text: "Team", route: "/team" },
+				{ icon: "information", text: "About", route: "/about" },
 			],
 		};
 	},
