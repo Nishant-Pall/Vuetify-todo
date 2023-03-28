@@ -8,7 +8,7 @@
 				v-for="project in projects"
 				:key="project.title"
 			>
-				<v-layout row wrap>
+				<v-layout row wrap :class="`pa-3 project ${project.status}`">
 					<v-flex xs12 md6>
 						<div class="caption grey--text">Title</div>
 						<div>{{ project.title }}</div>
@@ -77,6 +77,15 @@ export default {
 <style scoped>
 button {
 	margin: 1rem;
+}
+.project.complete {
+	border-left: 4px solid #3cd1c2;
+}
+.project.overdue {
+	border-left: 4px solid orange;
+}
+.project.ongoing {
+	border-left: 4px solid tomato;
 }
 </style>
 
