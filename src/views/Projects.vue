@@ -6,8 +6,13 @@
 				<v-expansion-panel v-for="(project, i) in myProjects" :key="i">
 					<v-expansion-panel-header> {{ project.title }}</v-expansion-panel-header>
 					<v-expansion-panel-content>
-						{{ project.content }}
-						{{ project.status }}
+						<div>
+							{{ project.content }}
+						</div>
+						<div class="py-4 grey--text">
+							<div class="font-weight-bold">due on: {{ project.due }}</div>
+							<div class="font-weight-bold">{{ project.status }}</div>
+						</div>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
 			</v-expansion-panels>

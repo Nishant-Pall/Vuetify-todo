@@ -16,7 +16,7 @@ export default new Vuex.Store({
 			},
 			{
 				title: "Code up the homepage",
-				person: "Chun Li",
+				person: "PRHYME",
 				due: "10th Jan 2019",
 				status: "complete",
 				content:
