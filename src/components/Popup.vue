@@ -82,9 +82,13 @@ export default {
 		submitForm() {
 			if (this.$refs.form.validate()) {
 				this.dialog = false;
-				console.log(this.title);
-				console.log(this.content);
-				console.log(this.status);
+				this.$store.dispatch("addProject", {
+					title: this.title,
+					person: "PRHYME",
+					due: this.due,
+					status: this.status,
+					content: this.content,
+				});
 			}
 		},
 	},

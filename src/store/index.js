@@ -53,7 +53,15 @@ export default new Vuex.Store({
 			return myProjects;
 		},
 	},
-	mutations: {},
-	actions: {},
+	mutations: {
+		addProject: (state, payload) => {
+			state.projects = [...state.projects, payload];
+		},
+	},
+	actions: {
+		addProject: (context, payload) => {
+			context.commit("addProject", payload);
+		},
+	},
 	modules: {},
 });
