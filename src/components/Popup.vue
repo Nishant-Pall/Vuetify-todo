@@ -41,7 +41,7 @@
 									<v-menu offset-y>
 										<template v-slot:activator="{ on, attrs }">
 											<v-text-field
-												v-model="due"
+												v-model="formattedDate"
 												label="Due Date"
 												prepend-icon="mdi-calendar"
 												readonly
@@ -67,7 +67,7 @@
 	</v-row>
 </template>
 <script>
-import format from "date-fns/format";
+import moment from "moment";
 
 export default {
 	data: () => ({
@@ -88,6 +88,11 @@ export default {
 			}
 		},
 	},
-	computed: {},
+	computed: {
+		formattedDate() {
+			const date = moment(this.due).format("DD-MMM-YYYY");
+			return date !== "Invalid date" ? date : "";
+		},
+	},
 };
 </script>
