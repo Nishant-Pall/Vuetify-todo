@@ -32,6 +32,9 @@
 
 		<v-navigation-drawer class="indigo" v-model="drawer" app temporary>
 			<v-list>
+				<v-list-item>
+					<Popup></Popup>
+				</v-list-item>
 				<v-list-item v-for="link in links" :key="link.text" router :to="link.route">
 					<v-list-item-icon>
 						<v-icon class="white--text">mdi-{{ link.icon }}</v-icon>
@@ -47,6 +50,8 @@
 	</nav>
 </template>
 <script>
+import Popup from "./Popup.vue";
+
 export default {
 	data() {
 		return {
@@ -58,6 +63,9 @@ export default {
 				{ icon: "information", text: "About", route: "/about" },
 			],
 		};
+	},
+	components: {
+		Popup,
 	},
 };
 </script>
