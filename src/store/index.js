@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import db from "@/fb";
+import { doc, addDoc, collection } from "firebase/firestore";
 
 Vue.use(Vuex);
 
@@ -59,8 +61,17 @@ export default new Vuex.Store({
 		},
 	},
 	actions: {
-		addProject: (context, payload) => {
-			context.commit("addProject", payload);
+		addProject: async (context, payload) => {
+			await addDoc(collection(db, "projects"), {
+				payload,
+			})
+				.then(() => {
+					console.log("Project stored in database");
+					context.commit("addProject", payload);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		},
 	},
 	modules: {},

@@ -85,7 +85,7 @@ export default {
 				this.$store.dispatch("addProject", {
 					title: this.title,
 					person: "PRHYME",
-					due: this.due,
+					due: this.formattedDate,
 					status: this.status,
 					content: this.content,
 				});
