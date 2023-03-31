@@ -23,7 +23,7 @@
 				</v-tooltip>
 			</v-layout>
 
-			<v-card flat class="pa-5 my-5" v-for="project in projects" :key="project.title">
+			<v-card flat class="pa-5 my-5" v-for="(project, index) in projects" :key="index">
 				<v-layout row wrap :class="`pa-3 project ${project.status}`">
 					<v-flex xs12 md6>
 						<div class="caption grey--text">Title</div>
@@ -53,13 +53,16 @@
 <script>
 export default {
 	data() {
-		return {
-			projects: this.$store.state.projects,
-		};
+		return {};
 	},
 	methods: {
 		sortBy(prop) {
 			this.projects.sort((a, b) => (a[prop] > b[prop] ? 1 : -1));
+		},
+	},
+	computed: {
+		projects() {
+			return this.$store.state.projects;
 		},
 	},
 };
@@ -70,7 +73,7 @@ button {
 	margin: 1rem;
 }
 
-.project.complete {
+.project.completed {
 	border-left: 4px solid #3cd1c2;
 }
 
@@ -82,7 +85,7 @@ button {
 	border-left: 4px solid tomato;
 }
 
-.v-chip.complete {
+.v-chip.completed {
 	background: #3cd1c2 !important;
 }
 

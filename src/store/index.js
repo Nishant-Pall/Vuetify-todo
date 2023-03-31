@@ -1,46 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import db from "@/fb";
-import { doc, addDoc, collection } from "firebase/firestore";
+import { doc, addDoc, collection, getDocs } from "firebase/firestore";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		projects: [
-			{
-				title: "Design a new website",
-				person: "PRHYME",
-				due: "1st Jan 2019",
-				status: "ongoing",
-				content:
-					"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
-			},
-			{
-				title: "Code up the homepage",
-				person: "PRHYME",
-				due: "10th Jan 2019",
-				status: "complete",
-				content:
-					"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
-			},
-			{
-				title: "Design video thumbnails",
-				person: "Ryu",
-				due: "20th Dec 2018",
-				status: "complete",
-				content:
-					"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
-			},
-			{
-				title: "Create a community forum",
-				person: "Gouken",
-				due: "20th Oct 2018",
-				status: "overdue",
-				content:
-					"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!",
-			},
-		],
+		projects: [],
 		team: [
 			{ name: "PRHYME", role: "Web developer" },
 			{ name: "Ryu", role: "Graphic designer" },
@@ -59,6 +26,14 @@ export default new Vuex.Store({
 		addProject: (state, payload) => {
 			state.projects = [...state.projects, payload];
 		},
+		getProjects: (state, payload) => {
+			const changes = payload.docChanges();
+			changes.forEach((change) => {
+				if (change.type === "added") {
+					state.projects.push({ ...change.doc.data().payload, id: change.doc.id });
+				}
+			});
+		},
 	},
 	actions: {
 		addProject: async (context, payload) => {
@@ -68,6 +43,15 @@ export default new Vuex.Store({
 				.then(() => {
 					console.log("Project stored in database");
 					context.commit("addProject", payload);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		},
+		fetchProjects: async (context) => {
+			await getDocs(collection(db, "projects"))
+				.then((data) => {
+					context.commit("getProjects", data);
 				})
 				.catch((err) => {
 					console.log(err);

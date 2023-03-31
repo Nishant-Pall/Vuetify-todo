@@ -21,5 +21,8 @@ export default {
 	data: () => ({
 		//
 	}),
+	created() {
+		this.$store.dispatch("fetchProjects");
+	},
 };
 </script>
