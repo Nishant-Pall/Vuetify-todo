@@ -39,7 +39,7 @@
 		<v-navigation-drawer class="indigo" v-model="drawer" app temporary>
 			<v-list>
 				<v-list-item>
-					<Popup @projectAdded="snackbar = true" />
+					<Popup @projectAdded="onProjectUpload" />
 				</v-list-item>
 				<v-list-item v-for="link in links" :key="link.text" router :to="link.route">
 					<v-list-item-icon>
@@ -71,6 +71,12 @@ export default {
 			snackbar: false,
 			text: `Project created!`,
 		};
+	},
+	methods: {
+		onProjectUpload() {
+			this.snackbar = false;
+			this.drawer = false;
+		},
 	},
 	components: {
 		Popup,
