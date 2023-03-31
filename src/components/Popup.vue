@@ -59,7 +59,7 @@
 					</v-card-text>
 					<v-card-actions>
 						<v-spacer></v-spacer>
-						<v-btn color="blue darken-1" text @click="submitForm"> Save Project</v-btn>
+						<v-btn color="blue darken-1" text @click="submitForm" :loading="loading"> Save Project</v-btn>
 					</v-card-actions>
 				</v-form>
 			</v-card>
@@ -77,18 +77,24 @@ export default {
 		status: "",
 		due: null,
 		inputRules: [(v) => v?.length >= 3 || "Minimum length is 3 characters"],
+		loading: false,
 	}),
 	methods: {
 		submitForm() {
 			if (this.$refs.form.validate()) {
-				this.dialog = false;
-				this.$store.dispatch("addProject", {
-					title: this.title,
-					person: "PRHYME",
-					due: this.formattedDate,
-					status: this.status,
-					content: this.content,
-				});
+				this.loading = true;
+				this.$store
+					.dispatch("addProject", {
+						title: this.title,
+						person: "PRHYME",
+						due: this.formattedDate,
+						status: this.status,
+						content: this.content,
+					})
+					.finally(() => {
+						this.loading = true;
+						this.dialog = false;
+					});
 			}
 		},
 	},
