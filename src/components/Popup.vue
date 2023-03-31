@@ -94,6 +94,7 @@ export default {
 					.finally(() => {
 						this.loading = true;
 						this.dialog = false;
+						this.$emit("projectAdded");
 					});
 			}
 		},

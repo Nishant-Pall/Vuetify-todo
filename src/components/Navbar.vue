@@ -1,5 +1,11 @@
 <template>
 	<nav>
+		<v-snackbar v-model="snackbar" :timeout="3000" color="primary">
+			{{ text }}
+			<template v-slot:action="{ attrs }">
+				<v-btn color="white" v-bind="attrs" text @click="snackbar = false"> Close </v-btn>
+			</template>
+		</v-snackbar>
 		<v-toolbar flat>
 			<v-app-bar-nav-icon class="grey--text" v-on:click="drawer = !drawer"></v-app-bar-nav-icon>
 			<v-toolbar-title class="text-uppercase grey--text">
@@ -33,7 +39,7 @@
 		<v-navigation-drawer class="indigo" v-model="drawer" app temporary>
 			<v-list>
 				<v-list-item>
-					<Popup></Popup>
+					<Popup @projectAdded="snackbar = true" />
 				</v-list-item>
 				<v-list-item v-for="link in links" :key="link.text" router :to="link.route">
 					<v-list-item-icon>
@@ -62,6 +68,8 @@ export default {
 				{ icon: "account", text: "Team", route: "/team" },
 				{ icon: "information", text: "About", route: "/about" },
 			],
+			snackbar: false,
+			text: `Project created!`,
 		};
 	},
 	components: {
