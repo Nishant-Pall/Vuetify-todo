@@ -1,30 +1,45 @@
 <template>
-	<div class="about">
-		<h1>This is an about page</h1>
-		<v-container class="my-5">
-			<v-layout row wrap>
-				<v-flex xs12 md6>
-					<v-btn outlined block color="primary">1</v-btn>
-				</v-flex>
-				<v-flex xs4 md2>
-					<v-btn outlined block color="primary">2</v-btn>
-				</v-flex>
-				<v-flex xs4 md2>
-					<v-btn outlined block color="primary">3</v-btn>
-				</v-flex>
-				<v-flex xs4 md2>
-					<v-btn outlined block color="primary">4</v-btn>
-				</v-flex>
-			</v-layout>
-
-			<v-layout row justify-space-around>
-				<v-flex xs4 md3>
-					<v-btn outlined block color="error">1</v-btn>
-				</v-flex>
-				<v-flex xs4 md3>
-					<v-btn outlined block color="error">2</v-btn>
-				</v-flex>
-			</v-layout>
-		</v-container>
-	</div>
+	<v-stepper v-model="currStep">
+		<v-stepper-header>
+			<div v-for="(step, index) in computedSteps" :key="index">
+				<v-stepper-step :step="step" :complete="currStep > step">
+					{{ `Name of step ${index + 1}` }}
+				</v-stepper-step>
+				<v-divider v-if="index !== 4"></v-divider>
+			</div>
+		</v-stepper-header>
+		<v-stepper-items>
+			<v-stepper-content v-for="(step, index) in computedSteps" :key="index" :step="step">
+				<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+			</v-stepper-content>
+		</v-stepper-items>
+	</v-stepper>
 </template>
+
+<script>
+export default {
+	data() {
+		return {
+			currStep: 1,
+			stepArray: [1, 2, 3, 4, 5],
+		};
+	},
+	computed: {
+		computedSteps() {
+			if (this.$vuetify.breakpoint.width < 800) {
+				if (this.currStep === 1) {
+					return this.stepArray.slice(0, 3);
+				}
+				if (this.currStep === this.stepArray.length) {
+					return this.stepArray.slice(-3);
+				}
+				return this.stepArray.slice(this.currStep - 2, this.currStep + 1);
+			}
+			return this.stepArray;
+		},
+		breakWidth() {
+			return this.$vuetify.breakpoint.width;
+		},
+	},
+};
+</script>
